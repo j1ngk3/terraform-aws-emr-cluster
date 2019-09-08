@@ -335,3 +335,21 @@ variable "bootstrap_action" {
   description = "List of bootstrap actions that will be run before Hadoop is started on the cluster nodes"
   default     = []
 }
+
+variable "amazon_elastic_map_reduce_role_policy_arn" {
+  type       = string
+  desciption = "Policy ARN for Service role for Amazon EMR. Defaults to AWS commercial default managed policy. See https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-iam-roles.html"
+  default    = "arn:aws:iam::aws:policy/service-role/AmazonElasticMapReduceRole"
+}
+
+variable "amazon_elastic_map_reduce_for_ec2_role_policy_arn" {
+  type       = string
+  desciption = "Policy ARN for Service role for cluster ec2 instances. Defaults to AWS commercial default managed policy. See https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-iam-roles.html"
+  default    = "arn:aws:iam::aws:policy/service-role/AmazonElasticMapReduceforEC2Role"
+}
+
+variable "amazon_elastic_map_reduce_for_autoscaling_role_policy_arn" {
+  type       = string
+  desciption = "Policy ARN for Service role for automatic scaling in EMR. Defaults to AWS commercial default managed policy. See https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-iam-roles.html"
+  default    = "arn:aws:iam::aws:policy/service-role/AmazonElasticMapReduceforAutoScalingRole"
+}
