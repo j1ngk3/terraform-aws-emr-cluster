@@ -287,7 +287,7 @@ resource "aws_iam_role" "emr" {
 resource "aws_iam_role_policy_attachment" "emr" {
   count      = var.enabled ? 1 : 0
   role       = join("", aws_iam_role.emr.*.name)
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonElasticMapReduceRole"
+  policy_arn = "var.amazon_elastic_map_reduce_role_policy_arn"
 }
 
 /*
@@ -322,7 +322,7 @@ resource "aws_iam_role" "ec2" {
 resource "aws_iam_role_policy_attachment" "ec2" {
   count      = var.enabled ? 1 : 0
   role       = join("", aws_iam_role.ec2.*.name)
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonElasticMapReduceforEC2Role"
+  policy_arn = "var.amazon_elastic_map_reduce_for_ec2_role_policy_arn"
 }
 
 resource "aws_iam_instance_profile" "ec2" {
@@ -346,7 +346,7 @@ resource "aws_iam_role" "ec2_autoscaling" {
 resource "aws_iam_role_policy_attachment" "ec2_autoscaling" {
   count      = var.enabled ? 1 : 0
   role       = join("", aws_iam_role.ec2_autoscaling.*.name)
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonElasticMapReduceforAutoScalingRole"
+  policy_arn = "var.amazon_elastic_map_reduce_for_autoscaling_role_policy_arn"
 }
 
 resource "aws_emr_cluster" "default" {
